@@ -13,6 +13,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+//Popup für die Karte
 let marker = L.marker([lat, lng]).addTo(map);
 marker.bindPopup(`
 <strong>Moeraki Boulders</strong><br>
@@ -22,6 +23,21 @@ marker.bindPopup(`
 </ul> </em>
 `).openPopup();
 
+//Maßstab
 L.control.scale({
     imperial: false,
 }).addTo(map);
+
+//GeoJSON definiert
+let jsonPunkt = {
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [lng, lat]
+    },
+    "properties": {
+        "name": "Moeraki Boulders"
+    }
+};
+
+
