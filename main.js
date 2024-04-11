@@ -13,16 +13,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-//Popup für die Karte
-let marker = L.marker([lat, lng]).addTo(map);
-marker.bindPopup(`
-<strong>Moeraki Boulders</strong><br>
-<em> <ul>
-    <li>Breite: ${lat.toFixed(5)}</li>
-    <li>Länge: ${lng.toFixed(5)} </li>
-</ul> </em>
-`).openPopup();
-
 //Maßstab
 L.control.scale({
     imperial: false,
@@ -40,4 +30,14 @@ let jsonPunkt = {
     }
 };
 
-
+//Leaflet einfügen
+L.geoJSON(jsonPunkt, {}).bindPopup(function (layer) {
+    return `
+    <h2>${layer.feature.properties.name}
+    <h2>
+    <em> <ul>
+        <li>Breite: ${layer.feature.geometry.coordinates[1].toFixed(5)}</li>
+        <li>Länge: ${layer.feature.geometry.coordinates[0].toFixed(5)} </li>
+    </ul> </em>
+    `;
+}).addTo(map);
