@@ -3,8 +3,11 @@ let lat = -45.345275;
 let lng = 170.826061;
 let zoom = 13;
 
-let map = L.map('map').setView([lat, lng], zoom);
-
+//neue Kartenvariante von leaflet, nicht mehr aus dem Tutorial
+let map = L.map('map', {
+    center: [lat, lng],
+    zoom: zoom
+});
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
