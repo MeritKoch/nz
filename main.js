@@ -11,5 +11,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let marker = L.marker([lat, lng]).addTo(map);
-marker.bindPopup(`<strong>Moeraki Boulders</strong><br><em>Neuseeland</em>`).openPopup();
+marker.bindPopup(`
+<strong>Moeraki Boulders</strong><br>
+<em>
+<ul>
+<li>Breite: ${lat}</li>
+<li>Länge: ${lng} </li>
+</ul>
+</em>
+`).openPopup();
 
