@@ -285,7 +285,7 @@ let jsondata = {
     ]
 };
 
-//Leaflet einfügen
+//Popup definieren mit den Links aus Tabelle
 L.geoJSON(jsondata, {}).bindPopup(function (layer) {
     console.log(layer.feature.properties)
     return `
